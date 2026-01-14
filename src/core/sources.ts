@@ -5,7 +5,7 @@ import type { VideoSource, Subtitle, IntroOutro } from '../helpers/types';
 import type { KuudereWatchResponse } from './types';
 
 export const kuudereSources = async (id: string, subType: 'sub' | 'dub' = 'sub') => {
-  const [animeId, episodeNumber] = id.split('?n=');
+  const [animeId, episodeNumber] = decodeURIComponent(id).split('?n=');
 
   if (!animeId || !episodeNumber) throw new Error('Invalid ID format.');
 

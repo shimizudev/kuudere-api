@@ -58,7 +58,7 @@ export const formatEpisodes = async (animeId: string, response: KuudereWatchResp
     const thumbnail = mappedThumbnails.find(n => Number(n.number) === Number(episode.number));
 
     return {
-      id: `${animeId}?n=${episode.number}`,
+      id: encodeURIComponent(`${animeId}?n=${episode.number}`),
       title: episode.titles[0] ?? null,
       image: thumbnail?.url ?? null,
       number: episode.number,
