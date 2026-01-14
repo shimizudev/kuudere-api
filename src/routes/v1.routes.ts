@@ -26,7 +26,10 @@ v1.get(
   },
   {
     query: t.Object({
-      query: t.String(),
+      query: t.String({
+        examples: 'The Angel Next Door Spoils Me Rotten',
+        description: 'The query to search.',
+      }),
     }),
     detail: {
       summary: 'Search',
@@ -52,7 +55,10 @@ v1.get(
   },
   {
     params: t.Object({
-      id: t.String(),
+      id: t.String({
+        examples: '6765dc0f002fac7f9cda',
+        description: 'The id to fetch info from',
+      }),
     }),
     detail: {
       summary: 'Info',
@@ -77,7 +83,10 @@ v1.get(
   },
   {
     params: t.Object({
-      id: t.String(),
+      id: t.String({
+        examples: '6765dc0f002fac7f9cda',
+        description: 'The id to fetch episodes from',
+      }),
     }),
     detail: {
       summary: 'Episodes',
@@ -102,8 +111,15 @@ v1.get(
   },
   {
     query: t.Object({
-      id: t.String(),
-      subType: t.UnionEnum(['sub', 'dub'], { default: 'sub' }),
+      id: t.String({
+        examples: '6765dc0f002fac7f9cda%3Fn%3D1',
+        description: 'The episode id to fetch sources from.',
+      }),
+      subType: t.UnionEnum(['sub', 'dub'], {
+        default: 'sub',
+        examples: 'sub',
+        description: 'The audio type to fetch.',
+      }),
     }),
     detail: {
       summary: 'Sources',
